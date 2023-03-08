@@ -1,5 +1,6 @@
 import {Text, View, Pressable, Image, StyleSheet, Platform} from "react-native";
 import {useNavigation} from "@react-navigation/native";
+import MealDetails from "./MealDetails";
 //a component for each single meal item that will be displayed
 //in a MealsOverView screen in a flatlist
 function MealItem({id, title, imageUrl, duration, complexity, affordability}) {
@@ -22,11 +23,9 @@ function MealItem({id, title, imageUrl, duration, complexity, affordability}) {
                     <Image source={{uri: imageUrl}} style={styles.image}/>
                     <Text style={styles.title}>{title}</Text>
                 </View>
-                <View style={styles.details}>
-                    <Text style={styles.detailItem}>{duration}</Text>
-                    <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
-                    <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
-                </View>
+                <MealDetails duration={duration}
+                             affordability={affordability}
+                             complexity={complexity}/>
             </Pressable>
         </View>
     );
