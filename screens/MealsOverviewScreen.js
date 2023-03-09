@@ -1,7 +1,8 @@
 import {CATEGORIES, MEALS} from "../data/dummy-data";
 import {View, Text, StyleSheet, FlatList} from "react-native";
-import MealItem from "../components/MealItem";
+import MealItem from "../components/mealsList/MealItem";
 import {useLayoutEffect} from "react";
+import Mealslist from "../components/mealsList/MealsList";
 
 function MealsOverviewScreen({ route, navigation }) {
     //getting the items id
@@ -17,9 +18,11 @@ function MealsOverviewScreen({ route, navigation }) {
             (category) => category.id === catId).title;
 
         navigation.setOptions({
-            title:categoryTitle
+            title: categoryTitle
         });
-    },[catId, navigation]);
+    }, [catId, navigation]);
+
+    return <Mealslist items={displayedMeals}/>
 
 
 
