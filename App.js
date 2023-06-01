@@ -13,6 +13,8 @@ import {store} from './store/redux/store';
 import * as Notification from 'expo-notifications';
 import FavoritesContextProvider from "./store/context/favorites-context";
 import {CATEGORIES} from "./data/dummy-data";
+import {useEffect} from "react";
+import {Alert} from "react-native";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -56,6 +58,28 @@ function DrawerNavigator() {
     );
 };
 export default function App() {
+    useEffect(() =>
+    {
+        async function configurePushNotifications() {
+           const {status} = Notification.getPermissionsAsync();
+           let finalStatus = status;
+           if (finalStatus !== 'granted') {
+               const {status} = await Notification.requestPermissionsAsync();
+               finalStatus = status;
+           }
+           if (finalStatus !== 'granted') {
+               Alert.alert("Permission required",
+                   "Push not need permission");
+               return;
+           }
+        }
+
+        Notification.getExpoPushTokenAsync().then(pushTokenData => {
+            console.log(pushTokenData);
+        });
+
+        configurePushNotifications();
+    }, []);
   return (
     <View style={styles.container}>
         <StatusBar style='light'/>
