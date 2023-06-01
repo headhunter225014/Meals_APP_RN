@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Button, FlatList, StyleSheet, Text, View} from 'react-native';
 import CategoriesScreen from "./screens/CategoriesScreen";
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
@@ -10,7 +10,9 @@ import FavoritesScreen from "./screens/FavoritesScreen";
 import {Ionicons} from "@expo/vector-icons";
 import {Provider} from "react-redux";
 import {store} from './store/redux/store';
+import * as Notification from 'expo-notifications';
 import FavoritesContextProvider from "./store/context/favorites-context";
+import {CATEGORIES} from "./data/dummy-data";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -53,8 +55,6 @@ function DrawerNavigator() {
         </>
     );
 };
-
-
 export default function App() {
   return (
     <View style={styles.container}>

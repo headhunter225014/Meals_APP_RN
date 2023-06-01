@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "my-project",
+    "name": "Meals Book",
     "slug": "my-project",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,16 +15,33 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "buildNumber": "1.0.0",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.headhunter225014.mealsbook"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.headhunter225014.mealsbook"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8505f289-0a44-4de4-895e-58f236ee0348"
+      },
+      "plugins": [
+        [
+          "expo-notifications",
+          {
+            "icon": "./local/assets/icon.png",
+            "color": "#ffffff"
+          }
+        ]
+      ]
     }
   }
 }
